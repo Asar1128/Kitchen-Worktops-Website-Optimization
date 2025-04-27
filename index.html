@@ -2,16 +2,7 @@
 <html lang="en-GB">
 
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-K7H75QDM');</script>
-    <!-- End Google Tag Manager -->
+ 
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,14 +30,18 @@
     <link rel="icon" type="image/png" href="../images/favicon.ico">
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" as="style">
-    <link rel="preload" href="css/bootstrap.css" as="style">
-    <link rel="preload" href="css/style.css" as="style">
     <link rel="preload" href="js/core.min.js" as="script">
     <link rel="preload" href="js/script.js" as="script">
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="image" href="images/hero-mobile.webp" media="(max-width:600px)">
+    <link rel="preload" as="image" href="images/hero-desktop.webp" media="(min-width:1201px)">
+    <link rel="preload"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.woff2?v=4.5.0" as="font"
+        type="font/woff2" crossorigin="anonymous">
+
 
     <!-- Stylesheets-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css" id="main-styles-link">
@@ -141,7 +136,7 @@
 
         /* Layout shift prevention */
         .bg-gray-50 {
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 0.5;
         }
     </style>
 </head>
@@ -366,36 +361,17 @@
                 </div>
                 <div class="box-position">
                     <picture>
-                        <!-- Mobile (up to 600px) -->
-                        <source media="(max-width: 600px)"
-                                srcset="images/hero-mobile.webp 600w"
-                                type="image/webp"
-                                width="600"
-                                height="156">
-                        
-                        <!-- Tablet (601px to 1200px) -->
-                        <source media="(max-width: 1200px)"
-                                srcset="images/hero-tablet.webp 1200w"
-                                type="image/webp"
-                                width="1200"
-                                height="312">
-                        
-                        <!-- Desktop (1201px+) -->
-                        <source srcset="images/hero-desktop.webp 1920w"
-                                type="image/webp"
-                                width="1920"
-                                height="500">
-                                
-                        <!-- Fallback -->
-                        <img src="/images/hero-desktop.webp"
-                             alt="Kitchen Worktops"
-                             width="1920"
-                             height="500"
-                             loading="eager"
-                             decoding="async">
-                      </picture>
-                  
-                  </div>
+                        <source media="(max-width: 600px)" srcset="images/hero-mobile.webp" type="image/webp">
+                        <source media="(max-width: 1200px)" srcset="images/hero-tablet.webp" type="image/webp">
+                        <source srcset="images/hero-desktop.webp" type="image/webp">
+
+                        <!-- Fallback image: always set src -->
+                        <img src="images/hero-desktop.webp" alt="Kitchen Worktops" width="1920" height="500"
+                            loading="eager" decoding="async">
+                    </picture>
+
+
+                </div>
             </div>
         </section>
         <br>
@@ -424,7 +400,7 @@
                         </div>
                     </div>
 
-                   
+
                     <div class="col-md-3 col-6 pl-0 col-sm-4 mb-4 position-ralative">
                         <div class="bg-gray-50 border border-gray-150 position-relative">
                             <a id="home" class="block" href="dekton-awake.html" aria-label="Dekton Awake"
@@ -470,7 +446,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
 
                     <div class="col-md-3 col-6 pl-0 col-sm-4 mb-4 position-ralative">
                         <div class="bg-gray-50 border border-gray-150 position-relative">
@@ -494,7 +470,7 @@
                             </div>
                         </div>
                     </div>
-  <!-- //done -->
+               
                     <div class="col-md-3 col-6 pl-0 col-sm-4 mb-4 position-ralative">
                         <div class="bg-gray-50 border border-gray-150 position-relative">
                             <a id="home" class="block" href="tarragona.html" aria-label="Tarragona CQP207"
@@ -936,7 +912,7 @@
     <script src="https://www.londonkitchenworktops.com/custom.js" defer></script>
     <script src="js/jquery.min1.js" defer></script>
     <script src="js/youtubegallerywall.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js" defer></script>
 
     <script>
         // Lazy loading implementation
@@ -955,12 +931,52 @@
 
             // Image hover functions
             function hideOnImage() {
-                document.querySelector(".image_on").classList.add('hidden');
-            }
+    document.querySelector(".image_on").classList.add('hidden');
+}
 
-            function showOnImage() {
-                document.querySelector(".image_on").classList.remove('hidden');
-            }
+function hideOnImage() {
+    document.querySelector(".image_on").classList.add('hidden');
+}
+
+function showOnImage() {
+    document.querySelector(".image_on").classList.remove('hidden');
+}
+   function hideOn() {
+    document.querySelector(".image_onn").classList.add('hidden');
+}
+
+function showOn() {
+    document.querySelector(".image_onn").classList.remove('hidden');
+}
+   function hideImage() {
+    document.querySelector(".image_onnn").classList.add('hidden');
+}
+
+function showImage() {
+    document.querySelector(".image_onnn").classList.remove('hidden');
+}
+function hideImg() {
+    document.querySelector(".image_onnnn").classList.add('hidden');
+}
+
+function showImg() {
+    document.querySelector(".image_onnnn").classList.remove('hidden');
+}
+   function hideImgs() {
+    document.querySelector(".image_onnnnn").classList.add('hidden');
+}
+
+function showImgs() {
+    document.querySelector(".image_onnnnn").classList.remove('hidden');
+}
+
+function hideImgn(obj) {
+    document.querySelector(".image_"+obj).classList.add('hidden');
+}
+
+function showImgn(obj) {
+    document.querySelector(".image_"+obj).classList.remove('hidden');
+}
 
             // Other hover functions...
 
@@ -985,6 +1001,17 @@
         gtag('js', new Date());
         gtag('config', 'G-LGLMW7359P');
     </script>
+
+       <!-- Google Tag Manager -->
+       <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-K7H75QDM');</script>
+<!-- End Google Tag Manager -->
 </body>
 
 </html>
