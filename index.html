@@ -43,7 +43,6 @@
 
     <!-- Stylesheets-->
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css" id="main-styles-link">
     <style>
         .ie-panel {
@@ -106,7 +105,11 @@
             display: none;
             transition: 0.5s;
         }
-
+        /* Hover effect */
+.box-icon-modern-icon:hover::after {
+    -webkit-transform: translate3d(-50%, 0, 0) rotate(0deg);
+    transform: translate3d(-50%, 0, 0) rotate(0deg);
+}
         @media screen and (max-width: 767px) {
             .wall .row h2 {
                 font-size: 5vw !important;
@@ -367,7 +370,7 @@
 
                         <!-- Fallback image: always set src -->
                         <img src="images/hero-desktop.webp" alt="Kitchen Worktops" width="1920" height="500"
-                            loading="eager" decoding="async">
+                            loading="lazy">
                     </picture>
 
 
@@ -913,24 +916,9 @@
     <script src="js/jquery.min1.js" defer></script>
     <script src="js/youtubegallerywall.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js" defer></script>
-
     <script>
-        // Lazy loading implementation
-        document.addEventListener("DOMContentLoaded", function () {
-            var lazyLoadInstance = new LazyLoad({
-                elements_selector: "img.lazy",
-                threshold: 100
-            });
-
-            // Preloader removal
-            window.addEventListener('load', function () {
-                setTimeout(function () {
-                    document.querySelector('.preloader').style.display = 'none';
-                }, 500);
-            });
-
-            // Image hover functions
-            function hideOnImage() {
+                  // Image hover functions
+                  function hideOnImage() {
     document.querySelector(".image_on").classList.add('hidden');
 }
 
@@ -978,7 +966,23 @@ function showImgn(obj) {
     document.querySelector(".image_"+obj).classList.remove('hidden');
 }
 
-            // Other hover functions...
+
+    </script>
+
+    <script>
+        // Lazy loading implementation
+        document.addEventListener("DOMContentLoaded", function () {
+            var lazyLoadInstance = new LazyLoad({
+                elements_selector: "img.lazy",
+                threshold: 100
+            });
+
+            // Preloader removal
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    document.querySelector('.preloader').style.display = 'none';
+                }, 500);
+            });
 
             // YouTube gallery initialization
             var galleryULref = "#youtubelist";
